@@ -1,4 +1,4 @@
-# qm-academy
+# BEES-Academy
 
 ## Before start your code:
 
