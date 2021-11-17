@@ -2,14 +2,21 @@
 Feature: Register
   As an user in the app
   Marcos would like sign up in the application
-  To buy products to his account
+  To manage his purchases
 
   @tags
+  # Gherkin imperativo, como foco em COMO deve ser feito e não no QUE deveria ser feito!
+  # And he accesses the create password screen through register flow
   Scenario Outline: Try register with password outside of security standards
     Given the user is in the register screen
-    And he accesses the create password screen through register flow
+    And he fills email field with valid value
+    And he clicks on continue button
+    And he fills the token field with valid value
+    And he clicks on continue button
+    And he fills the name and ninkname with valid values
+    And he clicks on continue button
     When he tries to create the password with the following value "<password>"
-    Then a error message about password roles should be displayed
+    Then an error message about password roles should be displayed
 
     Examples:
       | password    |

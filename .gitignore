@@ -2,3 +2,7 @@ dourado/
 .idea/
 .vscode/
 venv
+.pytest_cache
+project/__pycache__/
+project/academy/tests/features/__pycache__/
+project/academy/tests/steps/__pycache__/
