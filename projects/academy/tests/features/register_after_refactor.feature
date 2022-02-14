@@ -9,12 +9,7 @@ Feature: Register
   # And he accesses the create password screen through register flow
   Scenario Outline: Try register with password outside of security standards
     Given the user is in the register screen
-    And he fills email field with valid value
-    And he clicks on continue button
-    And he fills the token field with valid value
-    And he clicks on continue button
-    And he fills the name and ninkname with valid values
-    And he clicks on continue button
+    And he accesses the create password screen through register flow
     When he tries to create the password with the following value "<password>"
     Then an error message about password roles should be displayed
 
@@ -25,15 +20,17 @@ Feature: Register
       | abcdecghijk |
       |             |
 
-  @tags
+  # Variable table is not supported by Pytest-BDD
   Scenario Outline: Try register using invalid Account Number + invalid Liquor License Number
     Given the user is in the register flow
-    And access the register POC screen
-    And fill the field(s) with "<account_number>"
-    And fill the field(s) with "<liquor_license_number>"
-    When trigger the register page continue option
+    And he accesses the register POC screen by register flow
+    And he fills the following fields with the following values
+      | account_number        | <account_number>        |
+      | liquor_license_number | <liquor_license_number> |
+    When he triggers the register page continue option
     Then the error message should be displayed
 
+    @tag-ALL
     Examples:
       | account_number | liquor_license_number |
       | invalid        | invalid               |
@@ -43,15 +40,7 @@ Feature: Register
       | valid          | empty                 |
       | not-registered | valid                 |
 
-  @tags
-  Scenario Outline: Try register using invalid Account Number + invalid Liquor License Number - BR
-    Given the user is in the register flow
-    And access the register POC screen
-    And fill the field(s) with "<account_number>"
-    And fill the field(s) with "<liquor_license_number>"
-    When trigger the register page continue option
-    Then the error message should be displayed
-
+    @tags-BR
     Examples:
       | account_number      | liquor_license_number |
       | cpf-not-registered  | cpf-not-registered    |
@@ -59,21 +48,7 @@ Feature: Register
       | cnpj-not-registered | cnpj-not-registered   |
       | empty               | empty                 |
 
-  @tags
-  Scenario Outline: Try register using invalid Account Number + invalid Liquor License Number - MX
-    Given the user is in the register flow
-    And access the register POC screen
-    And fill the field(s) with "<account_number>"
-    When trigger the register page continue option
-    Then the error message should be displayed
-
-    Examples:
-      | account_number |
-      | invalid        |
-      | empty          |
-      | not-registered |
-
-  @tags
+  @tags-US
   Scenario Outline: Try register using invalid Account Number + invalid Liquor License Number - US
     Given the user is in the register flow
     And access the register POC screen
@@ -97,49 +72,18 @@ Feature: Register
       | not-registered | not-registered        | valid          |
       | valid          | not-registered        | not-registered |
 
-  # Android is failing due to the issue @bug-BEESMA-20897
   @tags
-  Scenario Outline: Try register using invalid token
-    Given the user is in the register screen
-    And she accesses the token screen
-    When she tries to access the personal info screen using the value "<value>"
-    Then a error message about the "<value>" token field should be displayed
-
-    Examples:
-      | value         |
-      | empty         |
-      | less-than-six |
-      | more-than-six |
-
-  @tags
-  Scenario Outline: Try register using invalid Email
-    Given the user is in the register screen
-    When he fills the email fields with a "<value>"
-    Then an error message about the "<value>" should be displayed
-
-    Examples:
-      | value      |
-      | registered |
-      | invalid    |
-      | empty      |
-
-  @tags
-  Scenario Outline: Try register using invalid Phone Number
-    Given the user is in the register screen
-    When he fills the phone fields with a "<value>"
-    Then an error message about the "<value>" phone should be displayed
-
-    # TODO: There are no phones registered for the zones
-    Examples:
-      | value   |
-      # | registered |
-      | invalid |
-      | empty   |
-
-  # Android is failing due to the issue @bug-BEESMA-20897
-  @tags
+  # Gherkin imperativo, como foco em COMO deve ser feito e não no QUE deveria ser feito!
+  # And he accesses the create password screen through register flow
   Scenario: Registration successful - IAM
     Given the user is in the register screen
-    When he filled all information to register an account
-    And he associates the created account with a poc
-    Then he can see the Browse screen
+    And he fills email field with valid value
+    And he clicks on email continue button
+    And he fills the token field with valid value
+    And he clicks on token continue button
+    And he fills the name and ninkname with valid values
+    And he clicks on name and ninkname continue button
+    And he fills the password field with valid value
+    And he clicks on password continue button
+    When he finishes the register filling the POC info
+    Then the browser screen should be displayed

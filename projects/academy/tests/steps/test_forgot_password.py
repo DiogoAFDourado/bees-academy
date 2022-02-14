@@ -1,5 +1,5 @@
 from pytest_bdd import scenarios, given, parsers, when, then
-from project.logger import logger
+from projects.academy.utils.logger import logger
 
 scenarios('../features/forgot_password.feature')
 
@@ -9,8 +9,18 @@ def step_impl(user):
     logger.info(f'pass -- {user}')
 
 
+@given(parsers.parse('"{user_name}" is logged in to the application'))
+def step_impl(user_name):
+    logger.info(f'pass -- {user_name}')
+
+
 @given('she recovered his password by email')
 def step_impl():
+    logger.info('pass --> Step: Given she recovered his password by email')
+
+
+@given('she recovered his password by email "<test>"')
+def step_impl(test):
     logger.info('pass --> Step: Given she recovered his password by email')
 
 

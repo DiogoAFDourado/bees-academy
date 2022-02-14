@@ -8,10 +8,9 @@ Feature: Login
     Given "Fernanda" is in the login screen
 
   @tags
-  Scenario Outline: Try to login user with invalid credentials
-    Given she fills the login fields with the following values
-      | user     | <user_status>     |
-      | password | <password_status> |
+  Scenario Outline: Try to login with invalid credentials
+    Given he fills the user field with the "<user_status>" value
+    And he fills the password field with the "<password_status>" value
     When she clicks on the login button
     Then the message about invalid credentials should be displayed
 
@@ -28,6 +27,5 @@ Feature: Login
 
   @tags
   Scenario: Valid login with email
-    Given "Fernanda" is in the log in screen
     When she logs in the application using valid credentials
     Then the browser screen should be displayed
