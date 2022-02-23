@@ -6,7 +6,6 @@ Feature: Register
 
   @tags
   # Gherkin imperativo, como foco em COMO deve ser feito e não no QUE deveria ser feito!
-  # And he accesses the create password screen through register flow
   Scenario Outline: Try register with password outside of security standards
     Given the user is in the register screen
     And he fills email field with valid value
@@ -25,7 +24,7 @@ Feature: Register
       | abcdecghijk |
       |             |
 
-  # Variable table is not supported by Pytest-BDD
+  # Variable table is not supported by Pytest-BDD and tags over examples are not supported either
   Scenario Outline: Try register using invalid Account Number + invalid Liquor License Number
     Given the user is in the register flow
     And he accesses the register POC screen by register flow
@@ -53,31 +52,8 @@ Feature: Register
       | cnpj-not-registered | cnpj-not-registered   |
       | empty               | empty                 |
 
-  @tags-US
-  Scenario Outline: Try register using invalid Account Number + invalid Liquor License Number - US
-    Given the user is in the register flow
-    And access the register POC screen
-    And fill the field(s) with "<account_number>"
-    And fill the field(s) with "<liquor_license_number>"
-    And fill the field(s) with "<zip_code>"
-    When trigger the register page continue option
-    Then the error message should be displayed
-
-    Examples:
-      | account_number | liquor_license_number | zip_code       |
-      | invalid        | invalid               | invalid        |
-      | invalid        | valid                 | invalid        |
-      | valid          | invalid               | invalid        |
-      | invalid        | invalid               | valid          |
-      | empty          | valid                 | empty          |
-      | valid          | empty                 | empty          |
-      | empty          | empty                 | valid          |
-      | empty          | empty                 | empty          |
-      | not-registered | valid                 | not-registered |
-      | not-registered | not-registered        | valid          |
-      | valid          | not-registered        | not-registered |
-
   @tags
+  # Gherkin imperativo, como foco em COMO deve ser feito e não no QUE deveria ser feito!
   Scenario: Registration successful - IAM
     Given the user is in the register screen
     And he fills email field with valid value

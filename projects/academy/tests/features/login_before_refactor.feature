@@ -8,6 +8,7 @@ Feature: Login
     Given "Fernanda" is in the login screen
 
   @tags
+  # Gherkin imperativo, como foco em COMO deve ser feito e não no QUE deveria ser feito!
   Scenario Outline: Try to login with invalid credentials
     Given she fills the login fields with the following values
       | user     | <user_status>     |
@@ -26,7 +27,7 @@ Feature: Login
       | empty-input          | valid-password   |
       | empty-input          | empty-input      |
 
-  @tags
+  # Variable table is not supported by Pytest-BDD
   Scenario: Valid login with email
     And she fills the log in fields with valid values
     When she clicks on the log in button

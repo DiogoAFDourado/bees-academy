@@ -14,7 +14,7 @@ def _get_args():
 
 def main():
     pytest_args = _get_args()
-    tests_path = os.path.abspath('projects/academy/tests/')
+    tests_path = f'{os.path.dirname(os.path.abspath(""))}/projects/academy/tests/'
     # Pytest commands: https://gist.github.com/amatellanes/12136508b816469678c2
     pytest_command = [
         '--verbose',
