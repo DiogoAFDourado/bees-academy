@@ -7,14 +7,14 @@ Feature: Forgot Password
   Background:
     Given "Fernanda" is logged in to the application
 
-  @tags
+  @tags_1
   Scenario: Login after recovering password by token using email
     Given she recovered his password by email
     And she logs out of the application through home
     When she logs into the application with the password recovered
     Then she must be successfully logged in
 
-  @tags
+  @tags_2
   Scenario Outline: Outline
     Given she recovered his password by email "<test>"
     And she logs out of the application through home
