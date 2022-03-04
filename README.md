@@ -21,3 +21,9 @@
 #### Select "Virtualenv > Existing environment" > Search for your /Users/<username>/.../bees-academy/venv/bin/python3.9
 
 #### PyCharm should detect and activate venv automatically for this project.
+
+#### To run the current test, execute the following command on terminal: Doc: https://docs.pytest.org/en/7.0.x/reference/reference.html?highlight=run#pytest.Pytester.run
+
+''
+pytest --verbose --tb=short
+''

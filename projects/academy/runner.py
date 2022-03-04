@@ -1,9 +1,7 @@
 import argparse
 import os
 import sys
-
 import pytest
-from glob import glob
 
 
 def _get_args():
@@ -14,7 +12,7 @@ def _get_args():
 
 def main():
     pytest_args = _get_args()
-    tests_path = f'{os.path.dirname(os.path.abspath(""))}/projects/academy/tests/'
+    tests_path = f'{os.path.dirname(os.path.abspath(__file__))}/tests/'
     # Pytest commands: https://gist.github.com/amatellanes/12136508b816469678c2
     pytest_command = [
         '--verbose',
