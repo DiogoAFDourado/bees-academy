@@ -4,24 +4,19 @@ from projects.academy.utils.logger import logger
 scenarios('../features/forgot_password.feature')
 
 
-@given(parsers.parse('that {user} as an ADM user is in the login screen'))
-def step_impl(user):
-    logger.info(f'pass -- {user}')
-
-
 @given(parsers.parse('"{user_name}" is logged in to the application'))
 def step_impl(user_name):
     logger.info(f'pass -- {user_name}')
 
 
-@given('she recovered his password by email')
+@given('she recovered her password by email')
 def step_impl():
-    logger.info('pass --> Step: Given she recovered his password by email')
+    logger.info('pass --> Step: Given she recovered her password by email')
 
 
-@given('she recovered his password by email "<test>"')
+@given('she recovered her password by email "<test>"')
 def step_impl(test):
-    logger.info('pass --> Step: Given she recovered his password by email')
+    logger.info('pass --> Step: Given she recovered her password by email')
 
 
 @given('she logs out of the application through home')
