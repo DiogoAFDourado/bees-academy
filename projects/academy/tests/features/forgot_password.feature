@@ -7,7 +7,7 @@ Feature: Forgot Password
   Background:
     Given "Fernanda" is logged in to the application
 
-  @tags_1
+  @tags
   Scenario: Login after recovering password by token using email
     Given she recovered her password by email
     And she logs out of the application through home
