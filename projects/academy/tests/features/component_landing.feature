@@ -7,7 +7,7 @@ Feature: Login
   Background:
     Given "Fernanda" is in landing screen from application
 
-  @tags
+  @tag
   Scenario: Validate the loading page after access the login screen
     When she clicks on the log in button
     Then the load screen should be displayed
